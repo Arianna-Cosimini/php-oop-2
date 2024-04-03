@@ -5,21 +5,21 @@ class Products{
     public $nome;
     public $descrizione;
     public $prezzo;
-    public $immagine;
+ 
     public $categoria;
-    public $tipologia;
 
-    public function __construct($nome, $descrizione, $prezzo, $immagine, $categoria, $tipologia)
+    public function __construct($nome, $descrizione, $prezzo, Category $categoria)
     {
 
         $this->nome = $nome;
         $this->descrizione = $descrizione;
         $this->prezzo = $prezzo;
-        $this->immagine = $immagine;
         $this->categoria = $categoria;
-        $this->tipologia = $tipologia;
     }
-
-
+/*
+    public function getProductDet(){
+        return "Prodotto: $this->nome";
+    }
+*/
 
 }
