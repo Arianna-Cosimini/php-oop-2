@@ -1,7 +1,6 @@
 <?php
 
-class Products
-{
+class Products{
 
     public $nome;
     public $descrizione;
@@ -10,7 +9,7 @@ class Products
     public $categoria;
     public $tipologia;
 
-    public function __construct($id, $nome, $descrizione, $prezzo, $immagine, $categoria, $tipologia)
+    public function __construct($nome, $descrizione, $prezzo, $immagine, $categoria, $tipologia)
     {
 
         $this->nome = $nome;
