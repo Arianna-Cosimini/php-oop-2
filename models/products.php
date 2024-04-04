@@ -8,6 +8,7 @@ class Products{
  
     public $categoria;
 
+    public $image;
     public function __construct($nome, $descrizione, $prezzo, Category $categoria)
     {
 
@@ -16,10 +17,11 @@ class Products{
         $this->prezzo = $prezzo;
         $this->categoria = $categoria;
     }
-/*
-    public function getProductDet(){
-        return "Prodotto: $this->nome";
+
+
+    public function setImage($image) {
+        $this->image = $image;
     }
-*/
+
 
 }
