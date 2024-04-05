@@ -17,39 +17,58 @@ $dogs = new Category("cani","fa-dog");
 
 
 // giochi 
-$catBall = new Game("Pallina", "Pallina piccola per gatti", 5, $cats, "plastica");
+$catBall = new Game("Pallina", "Pallina piccola per gatti", 5, $cats);
 $catBall->setImage("https://tse1.mm.bing.net/th?id=OIP.GKZn7KGhSdUD1V6-h3ITHAHaHa&pid=Api&P=0&h=180");
+$catBall->setMaterial("Plastica");
 
-$dogBall = new Game("Pallina", "Pallina per cani", 5, $dogs, "plastica");
+
+$dogBall = new Game("Pallina", "Pallina per cani", 5, $dogs);
 $dogBall->setImage("https://tse2.mm.bing.net/th?id=OIP.rtItyQ9TpmrguWqiYEOiHAHaHi&pid=Api&P=0&h=180");
+$dogBall->setMaterial("Plastica");
 
-$fishCat = new Game("Pesciolino", "Pesciolino per gatti", 5, $cats, "Tessuto");
+
+
+$fishCat = new Game("Pesciolino", "Pesciolino per gatti", 5, $cats);
 $fishCat->setImage("https://www.galleranistore.it/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/g/i/gioco_per_gatti_pesciolino_colorato.jpg");
+$fishCat->setMaterial("Tessuto");
 
-$puppetDog = new Game("Pupazzino", "Pupazzino per cani", 5, $dogs, "Tessuto");
+
+$puppetDog = new Game("Pupazzino", "Pupazzino per cani", 5, $dogs);
 $puppetDog->setImage("https://m.media-amazon.com/images/I/51tct8tiWdL.jpg");
+$puppetDog->setMaterial("Tessuto");
+
 
 
 // mangiare
-$kibbleCat = new Food("Croccantini", "Croccantini per gatti", 8, $cats, "pesce", 1.5, 24.12);
+$kibbleCat = new Food("Croccantini", "Croccantini per gatti", 8, $cats, "pesce", 24.12);
 $kibbleCat->setImage("https://www.ptagencynews.it/wp-content/uploads/2021/07/trainer-natural-cibo-per-gatti-adulti-sterilizzati-alimento-secco-con-776x1024.jpg");
+$kibbleCat->setDimension("2");
 
-$kibbleDog = new Food("Croccantini", "Croccantini per cane", 8, $dogs, "pollo", 3, 07.05);
+$kibbleDog = new Food("Croccantini", "Croccantini per cane", 8, $dogs, "pollo", 07.05);
 $kibbleDog->setImage("https://www.braccobaldoshop.com/616-large_default/prolife-croccantini-cane-adult-medium-large-sensitive-maiale-e-riso-25-kg.jpg");
+$kibbleDog->setDimension("3");
 
-$meatCat = new Food("Bocconcini di carne", "Bocconcini di carne per gatti", 8, $cats, "tacchino", 0.25, 06.11);
+$meatCat = new Food("Bocconcini di carne", "Bocconcini di carne per gatti", 8, $cats, "tacchino", 06.11);
 $meatCat->setImage("https://tse1.mm.bing.net/th?id=OIP.oCRH28ocNOlvsAwItQcBFwAAAA&pid=Api&P=0&h=180");
+$meatCat->setDimension("0.25");
 
-$meatDog = new Food("Bocconcini di carne", "Bocconcini di carne per cani", 8, $dogs, "agnello", 0.50, 24.03);
+$meatDog = new Food("Bocconcini di carne", "Bocconcini di carne per cani", 8, $dogs, "agnello", 24.03);
 $meatDog->setImage("https://www.soloimigliori.it/wp-content/uploads/2020/04/cesar-cibo-per-cani.jpg");
+$meatDog->setDimension("0.50");
 
 // cuccia
 
 $kennelDog = new Beds("Cuccia", "Cuccia per cane", 50, $dogs, "large");
 $kennelDog->setImage("https://www.brico.it/wp-content/uploads/2016/11/Cuccia-per-cani-beddog.jpg");
+$kennelDog->setMaterial("Stoffa");
+$kennelDog->setDimension("large");
+
 
 $kennelCat = new Beds("Cuccia", "Cuccia per gatto", 50, $cats, "small");
 $kennelCat->setImage("https://tse2.mm.bing.net/th?id=OIP.2sPxFUTysCUveBNUYkkHCAHaE8&pid=Api&P=0&h=180");
+$kennelCat->setMaterial("Legno");
+$kennelCat->setDimension("small");
+
 
 
 $products = [
@@ -116,7 +135,7 @@ $products = [
                         <div class="card-body">
                             <h5 class="card-title d-flex justify-content-between ">
                                 <span><?= $product->descrizione ?></span>
-                                
+                                <span><i class="fa-solid <?= $product->categoria->icon ?>"></i></span>
                             </h5>
                            
                             <p class="card-text">€<?= $product->prezzo ?></p>
@@ -128,11 +147,11 @@ $products = [
 
                                     // controlliamo di che tipo sia il prodotto
                                     if ($product instanceof Food) {
-                                        echo '<li>Peso: ' . $product->weight . 'kg</li>';
+                                        echo '<li>Peso: ' . $product->getDimension() . 'kg</li>';
                                         echo '<li>Ingrediente principale: ' . $product->ingredient . '</li>';
                                     } else if ($product instanceof Game) {
 
-                                        echo '<li>Materiale: ' . $product->materiale . '</li>';
+                                        echo '<li>Materiale: ' . $product->getMaterial() . '</li>';
                                     } else if ($product instanceof Beds) {
 
                                         echo '<li>Taglia ' . $product->size . '</li>';

@@ -5,9 +5,7 @@ class Products{
     public $nome;
     public $descrizione;
     public $prezzo;
- 
     public $categoria;
-
     public $image;
     public function __construct($nome, $descrizione, $prezzo, Category $categoria)
     {
